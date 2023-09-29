@@ -35,6 +35,3 @@ def pio_clean(build_target=None):
         run_script(['run', '--target', 'clean'])
     else:
         run_script(['run', '--target', 'clean', '--environment', build_target])
-
-def remote_pull_branch(branch):
-    run_script(['pull', branch])

@@ -25,19 +25,16 @@ def main():
     # TODO: Implement Server-application communication (Serial communication)
     # TODO: Testing?
 
-    
     git.remote_clone()
     git.remote_reset()
+    pio.pio_clean()
     git.remote_pull_branch("AV-999/protobuf-integration")
+
     try:
         pio.pio_upload("mcu_hilsim")
     except:
         pio.pio_upload("mcu_hilsim")
     
-
-
-
-
     print("(main) Waiting 5s for port to open back up")
     time.sleep(5) # Wait for port to start back up
     
@@ -65,6 +62,7 @@ def main():
     f = open(logfile, "w", encoding="utf-8")
     f.write(hilsim_result.replace("\r\n", "\n"))
     print("(main) Finished remote hilsim run!")
+    git.remote_reset()
 
     pass
 
